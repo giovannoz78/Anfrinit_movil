@@ -232,9 +232,9 @@ window.addEventListener('resize', resize);
 // ── STATE ──────────────────────────────────────────────────────
 let camY=0, camX=0.25, autoRot=true;
 let dragOn=false, lastMX=0, lastMY=0;
-let viewMode=0, emoFreq=0.3, matrixOn=true, consLv=0, glowI=1.0;
+let viewMode=1, emoFreq=0.3, matrixOn=true, consLv=0, glowI=1.0;  // arranca en modo pirámide
 let fibPh=0, frame=0;
-let selIdx=21;
+let selIdx=8;  // FIB[8]=21 → radio=52.5 → siempre visible en pantalla
 let showFib=true;
 let partSpeed=0.5;
 let partDensity=0.5;
@@ -767,7 +767,9 @@ document.getElementById('btn-rot').addEventListener('touchstart',e=>{
   document.getElementById('btn-rot').textContent=autoRot?'⟳ ROT':'⏸ ROT';
 },{passive:true});
 document.getElementById('btn-s').addEventListener('touchstart',e=>{
-  e.stopPropagation(); selIdx=Math.floor(Math.random()*TL.length);
+  e.stopPropagation();
+  // primeros 15 nodos: radios de 2.5 a 610 — siempre visibles
+  selIdx=Math.floor(Math.random()*15);
 },{passive:true});
 document.getElementById('btn-fib').addEventListener('touchstart',e=>{
   e.stopPropagation(); showFib=!showFib;
@@ -801,7 +803,7 @@ document.getElementById('sl-density').addEventListener('input',function(){
 });
 
 // ── INIT ───────────────────────────────────────────────────────
-updatePaletteTargets();
+updatePaletteTargets(); // modo 1 = Azul Cuántico
 loop();
 </script>
 </body>
