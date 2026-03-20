@@ -186,7 +186,6 @@ input[type=range].green-slider::-webkit-slider-thumb {
     <button class="btn danger" id="btn-c">✕ CLR</button>
     <button class="btn" id="btn-hud">👁 HUD</button>
     <button class="btn accent" id="btn-shot">📷</button>
-    <button class="btn" id="btn-w">✦ LIB</button>
     <button class="btn" id="btn-b">⊘ HILOS</button>
     <button class="btn" id="btn-labels">⌗ IDS</button>
   </div>
@@ -1350,11 +1349,6 @@ document.getElementById('btn-c').addEventListener('touchstart',e=>{
 },{passive:true});
 document.getElementById('btn-shot').addEventListener('touchstart',e=>{
   e.stopPropagation(); takeScreenshot();
-},{passive:true});
-document.getElementById('btn-w').addEventListener('touchstart',e=>{
-  e.stopPropagation(); initAudio(); viewMode=4; matrixOn=false; consLv=Math.min(1,consLv+.1); updatePaletteTargets();
-  document.getElementById('btn-w').style.color='#ffcc44';
-  setTimeout(()=>{ document.getElementById('btn-w').style.color=''; },600);
 },{passive:true});
 document.getElementById('btn-labels').addEventListener('touchstart',e=>{
   e.stopPropagation(); showLabels=!showLabels;
